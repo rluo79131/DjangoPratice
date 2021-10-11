@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    th,td {
+        text-align: center
+    }
+</style>
+
+<br />
+<h2>查詢頁面</h2>
+<br />
+<a class="btn btn-success" style="margin-bottom:10px" href="{% url 'create' %}">新增</a>
+<table class="table table-bordered">
+    <thead>
+        <tr class="info">
+            <th width="10%">編號</th>
+            <th width="15%">名稱</th>
+            <th width="15%">備註</th>
+            <th width="20%">編輯時間</th>
+            <th width="20%">建立時間</th>
+            <th width="20%">功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in datas %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.remark}}</td>
+                <td>{{data.modTime|date:'Y/m/d H:i'}}</td>
+                <td>{{data.creTime|date:'Y/m/d H:i'}}</td>
+                <td>
+                    <a href="{% url 'update' data.id %}" class="btn btn-info">修改</a>
+                    <a href="{% url 'delete' data.id %}" class="btn btn-danger">刪除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

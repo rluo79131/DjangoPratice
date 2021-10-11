@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br />
+<h2>編輯頁面</h2>
+<br />
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>{{ form.remark.label }}</label>
+            {{ form.remark }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <button type="submit" class="btn btn-success">送出</button>
+            <a class="btn btn-danger" href="{% url 'index' %}">取消</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
